@@ -1,4 +1,4 @@
-# gulp-json-format
+# gulp-json-format [![NPM version][npm-image]][npm-url]
 > A [gulp](https://github.com/gulpjs/gulp) plugin to parse and format JSON in files.
 
 ## Usage
