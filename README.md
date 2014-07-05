@@ -5,7 +5,9 @@
 
 First, install `gulp-json-format` as a development dependency:
 
-`npm install gulp-json-format --save-dev`
+```
+npm install gulp-json-format --save-dev
+```
 
 Then, add it to your `gulpfile.js`:
 
