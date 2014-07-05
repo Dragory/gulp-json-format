@@ -1,4 +1,4 @@
-# gulp-json-format
+# gulp-json-format [![NPM version][npm-image]][npm-url]
 > A [gulp](https://github.com/gulpjs/gulp) plugin to parse and format JSON in files.
 
 ## Usage
@@ -28,3 +28,6 @@ gulp.src('manifest.json')
 Type: `Number` or `String`
 
 See the space parameter for [JSON.stringify() on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify).
+
+[npm-url]: https://www.npmjs.org/package/gulp-json-format
+[npm-image]: https://badge.fury.io/js/gulp-json-format.svg
