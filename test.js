@@ -7,12 +7,6 @@ var File = require('gulp-util').File,
 var srcJson = '{"a":"b","c":[1,2,   3, 4]}';
 var refJson = JSON.stringify(JSON.parse(srcJson), null, 4);
 
-var readContent = function(file, cb) {
-	var reader = through(function(data) {
-		cb(data.toString());
-	});
-};
-
 it('should format files with buffer content', function(done) {
 	var file = new File({
 		'contents': new Buffer(srcJson)
