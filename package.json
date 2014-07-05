@@ -1,7 +1,7 @@
 {
   "name": "gulp-json-format",
   "version": "1.0.0",
-  "description": "Formats JSON strings. Exposes the 'space' parameter of JSON.stringify().",
+  "description": "A gulp plugin to parse and format JSON in files.",
   "keywords": [
     "gulpplugin",
     "json",
