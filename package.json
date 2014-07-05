@@ -1,0 +1,26 @@
+{
+  "name": "gulp-json-format",
+  "version": "1.0.0",
+  "description": "Formats JSON strings. Exposes the 'space' parameter of JSON.stringify().",
+  "keywords": [
+    "gulpplugin",
+    "json",
+    "format",
+    "json format",
+    "stringify"
+  ],
+  "homepage": "https://github.com/Dragory/gulp-json-format",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Dragory/gulp-json-format.git"
+  },
+  "main": "./index.js",
+  "dependencies": {
+    "map-stream": "^0.1.0",
+    "through": "^2.3.4"
+  },
+  "devDependencies": {
+    "gulp-util": "^2.2.19",
+    "mocha": "^1.20.1"
+  }
+}
