@@ -1,4 +1,4 @@
-# gulp-json-format [![NPM version][npm-image]][npm-url]
+# gulp-json-format [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 > A [gulp](https://github.com/gulpjs/gulp) plugin to parse and format JSON in files.
 
 ## Usage
@@ -31,3 +31,6 @@ See the space parameter for [JSON.stringify() on MDN](https://developer.mozilla.
 
 [npm-url]: https://www.npmjs.org/package/gulp-json-format
 [npm-image]: https://badge.fury.io/js/gulp-json-format.svg
+
+[travis-url]: https://travis-ci.org/Dragory/gulp-json-format
+[travis-image]: https://api.travis-ci.org/Dragory/gulp-json-format.svg
