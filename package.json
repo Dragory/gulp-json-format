@@ -9,6 +9,10 @@
     "json format",
     "stringify"
   ],
+  "author": {
+    "name": "Miikka Virtanen",
+    "email": "contact@mivir.fi"
+  },
   "homepage": "https://github.com/Dragory/gulp-json-format",
   "repository": {
     "type": "git",
