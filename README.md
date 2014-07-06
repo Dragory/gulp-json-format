@@ -12,7 +12,7 @@ npm install gulp-json-format --save-dev
 Then, add it to your `gulpfile.js`:
 
 ```javascript
-var jsonFormat = require('gulp-format-json');
+var jsonFormat = require('gulp-json-format');
 
 gulp.src('manifest.json')
 	.pipe(jsonFormat(4))
