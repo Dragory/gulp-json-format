@@ -1,12 +1,12 @@
 var streamMap = require('map-stream'),
 	through = require('through');
 
-module.exports = function(spaces, eol) {
+module.exports = function(spaces, endWithNewLine) {
 	return streamMap(function(file, cb) {
 		var stream = this;
 
 		var replacer = through(function(data) {
-			var formatted = JSON.stringify(JSON.parse(data.toString()), null, spaces) + (eol || '');
+			var formatted = JSON.stringify(JSON.parse(data.toString()), null, spaces) + (endWithNewLine ? '\n' : '');
 
 			if (true || file.isBuffer()) {
 				file.contents = new Buffer(formatted);
