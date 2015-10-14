@@ -7,6 +7,8 @@ module.exports = function(spaces, endWithNewLine) {
   return streamMap(function(file, cb) {
     var stream = this;
     var replacer = through(function(data) {
+      var name = file.history || [''];
+      name = gutil.colors.green(path.basename(name[0]));
       try {
         var formatted = JSON.stringify(JSON.parse(data.toString()), null, spaces) + (endWithNewLine ? '\n' : '');
         if (true || file.isBuffer()) {
@@ -16,9 +18,9 @@ module.exports = function(spaces, endWithNewLine) {
           file.contents.write(new Buffer(formatted));
           file.contents.end();
         }
-        gutil.log(gutil.colors.green((path.basename(file.history[0]))), gutil.colors.blue('ok'));
+        gutil.log(name, gutil.colors.blue('ok'));
       } catch (error) {
-        gutil.log(gutil.colors.green((path.basename(file.history[0]))), gutil.colors.red('error'));
+        gutil.log(name, gutil.colors.red('error'));
       }
       cb(null, file);
     });
