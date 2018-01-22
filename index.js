@@ -20,6 +20,6 @@ module.exports = function(spaces) {
 			}
 		});
 
-		file.pipe(replacer);
+		file.contents.pipe(replacer);
 	});
 };
