@@ -1,25 +1,23 @@
-var streamMap = require('map-stream'),
-	through = require('through');
+var through2 = require('through2');
+
+function format(buf, spaces) {
+	var parsed = JSON.parse(buf.toString('utf8'));
+	return JSON.stringify(parsed, null, spaces);
+}
 
 module.exports = function(spaces) {
-	return streamMap(function(file, cb) {
-		var stream = this;
-
-		var replacer = through(function(data) {
-			var formatted = JSON.stringify(JSON.parse(data.toString()), null, spaces);
-
-			if (true || file.isBuffer()) {
-				file.contents = new Buffer(formatted);
-				cb(null, file);
-			} else {
-				file.contents = through();
+	return through2.obj(function(file, enc, cb) {
+		if (file.isBuffer()) {
+			file.contents = new Buffer(format(file.contents, spaces));
+			cb(null, file);
+		} else {
+			file.contents.pipe(through2(function(contents) {
+				file.contents = through2();
 				cb(null, file);
 
-				file.contents.write(new Buffer(formatted));
+				file.contents.write(format(contents, spaces));
 				file.contents.end();
-			}
-		});
-
-		file.pipe(replacer);
+			}));
+		}
 	});
 };

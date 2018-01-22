@@ -24,11 +24,10 @@
     "test": "mocha test.js"
   },
   "dependencies": {
-    "map-stream": "~0.1.0",
-    "through": "~2.3.4"
+    "through2": "^2.0.3"
   },
   "devDependencies": {
-    "gulp-util": "~2.2.19",
-    "mocha": "~1.20.1"
+    "mocha": "~1.20.1",
+    "vinyl": "^2.1.0"
   }
 }

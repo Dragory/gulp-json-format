@@ -1,7 +1,7 @@
-var File = require('gulp-util').File,
+var File = require('vinyl'),
 	assert = require('assert'),
 	jsonFormat = require('./index.js'),
-	through = require('through'),
+	through2 = require('through2'),
 	Stream = require('stream');
 
 var srcJson = '{"a":"b","c":[1,2,   3, 4]}';
@@ -12,17 +12,16 @@ it('should format files with buffer content', function(done) {
 		'contents': new Buffer(srcJson)
 	});
 
-	var stream = jsonFormat(4);
+	var testJsonFormat = jsonFormat(4);
 
-	stream.pipe(through(function(file) {
-		file.pipe(through(function(contents) {
-			assert.equal(contents.toString(), refJson);
-			done();
-		}));
-	}));
+	testJsonFormat.write(file);
 
-	stream.write(file);
-	stream.end();
+	testJsonFormat.once('data', function(file) {
+		assert(file.isBuffer());
+		assert.equal(file.contents.toString('utf8'), refJson);
+
+		done();
+	});
 });
 
 it('should format files with stream content', function(done) {
@@ -36,15 +35,15 @@ it('should format files with stream content', function(done) {
 		'contents': readable
 	});
 
-	var stream = jsonFormat(4);
+	var testJsonFormat = jsonFormat(4);
 
-	stream.pipe(through(function(file) {
-		file.pipe(through(function(contents) {
-			assert.equal(contents.toString(), refJson);
+	testJsonFormat.write(file);
+
+	testJsonFormat.once('data', function(file) {
+		assert(file.isStream());
+		file.contents.pipe(through2(function(contents) {
+			assert.equal(contents.toString('utf8'), refJson);
 			done();
 		}));
-	}));
-
-	stream.write(file);
-	stream.end();
+	});
 });
